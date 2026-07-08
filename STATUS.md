@@ -1,20 +1,20 @@
 # STATUS.md — Live Infrastructure (auto-updated)
-_Last updated: 2026-07-08T11:53:58.651Z_
+_Last updated: 2026-07-08T12:08:55.471Z_
 
 ## Container
 - **Name**: vk-chat-eblei7
-- **Status**: running
+- **Status**: exited
 - **Started**: 2026-07-08T11:52:36.676180243Z
-- **Resources**: 0.00% CPU | 25.04MiB / 512MiB | 1.8kB / 11.6kB net
+- **Resources**: 0.00% CPU | 0B / 0B | 0B / 0B net
 - **Memory Limit**: 512MB
 - **Port**: 4149
 
 ## App
 - **Name**: chat-eblei7
 - **Subdomain**: chat-eblei7.vibekit.bot
-- **DB Status**: running
-- **Health Failures**: 0
-- **Last Healthy**: 2026-07-08T11:53:45.612+00:00
+- **DB Status**: stopped
+- **Health Failures**: 1
+- **Last Healthy**: 2026-07-08T12:02:58.099+00:00
 
 
 ## Host
@@ -26,6 +26,11 @@ _Last updated: 2026-07-08T11:53:58.651Z_
 > node server.js
 
 Placeholder ready on port 4149
+npm error path /app
+npm error command failed
+npm error signal SIGTERM
+npm error command sh -c node server.js
+npm error A complete log of this run can be found in: /home/appuser/.npm/_logs/2026-07-08T11_52_36_888Z-debug-0.log
 ```
 
 ## Recent Events
