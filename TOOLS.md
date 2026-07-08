@@ -6,6 +6,22 @@
 - web_fetch, web_search, browser, sub-agents, image analysis
 - VibeKit API via `source .vibekit-env` (see AGENTS.md for endpoints)
 
+## Deploy — ONLY when the user's own message asks for it
+Never deploy on your own initiative — "tap **Deploy**" stays the default close.
+When the user's message explicitly says deploy/publish/ship/make-it-live:
+commit your changes first, then:
+
+```bash
+source .vibekit-env
+curl -s -X POST "$VIBEKIT_API_URL/api/v1/hosting/app/$VIBEKIT_APP_ID/deploy-workspace?async=1" \
+  -H "Authorization: Bearer $VIBEKIT_API_KEY"
+# → { "jobId": "…" } — poll every ~5s until status is done|error:
+curl -s "$VIBEKIT_API_URL/api/v1/hosting/app/$VIBEKIT_APP_ID/deploy-workspace/jobs/<jobId>" \
+  -H "Authorization: Bearer $VIBEKIT_API_KEY"
+```
+`done` → confirm with the live URL. `error` → report the failing log line and
+stop (one deploy attempt per ask — never retry-loop a broken build).
+
 ## Parallel sub-agents — worktree isolation
 When you fan work out to multiple sub-agents that touch DIFFERENT files, give
 each its own git worktree (isolated branch + dir) so they never clobber each
